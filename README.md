@@ -9,7 +9,7 @@ a smart contract that uses an existing DEX through its public interface (composa
    KYIV / mFIAT pair in Uniswap V2, and then `swapTokens`, which swaps KYIV for mFIAT through that pair.
 
 Everything runs on a local Hardhat node that forks Sepolia (chain id 31337 locally, forked chain
-11155111). The Uniswap V2 contracts are the ones deployed on Sepolia:
+11155111). The Uniswap V2 contracts are the ones from the lab text, deployed on Sepolia:
 
 | Contract | Address on Sepolia |
 | --- | --- |
@@ -19,6 +19,10 @@ Everything runs on a local Hardhat node that forks Sepolia (chain id 31337 local
 
 The fork reads their code and storage from Sepolia over JSON-RPC, but every transaction is executed
 only by the local node and never reaches Sepolia. No accounts, API keys or testnet ETH are needed.
+
+The router and factory above are a separate deployment of the Uniswap V2 code (pair init code hash
+`0x4156ccc0...3fe7`, protocol fee switched on), not the one the Uniswap docs list for Sepolia
+(router `0xeE567Fe1712Faf6149d80dA1E6934E354124CfE3`).
 
 ## Layout
 
@@ -55,7 +59,7 @@ plain JSON-RPC like to any other node.
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
-| `SEPOLIA_RPC_URL` | `https://ethereum-sepolia-rpc.publicnode.com` | Sepolia endpoint the fork reads state from, for example `https://sepolia.drpc.org` |
+| `SEPOLIA_RPC_URL` | `https://ethereum-sepolia-rpc.publicnode.com` | Sepolia endpoint the fork reads state from, for example `https://sepolia.drpc.org`; an empty value means the default |
 
 The fork starts from the latest safe block of Sepolia (no block number is pinned). Public endpoints
 keep the state of recent blocks only, so pinning an old block usually fails. Each restart of the node
@@ -69,7 +73,8 @@ local fork. The phrase is public, so never send real funds to these addresses.
 ## Expected output
 
 An excerpt of `scripts/integrate.ts` on a fresh fork. The addresses of the lab contracts and of the
-pair are the same on every fresh fork; block numbers, hashes and the number of pairs are not.
+pair are the same on every fresh fork; block numbers, transaction hashes and the number of pairs
+may differ.
 
 ```text
 b) provideLiquidity: 1000.0 KYIV + 2000.0 mFIAT
