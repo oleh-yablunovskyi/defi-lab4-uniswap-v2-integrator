@@ -2,9 +2,9 @@ import hardhatToolboxMochaEthersPlugin from "@nomicfoundation/hardhat-toolbox-mo
 import { defineConfig } from "hardhat/config";
 
 // JSON-RPC endpoint of Sepolia that the fork reads its state from. The default is a
-// public endpoint that needs no account or API key; SEPOLIA_RPC_URL overrides it.
+// public endpoint that needs no account or API key; a non-empty SEPOLIA_RPC_URL overrides it.
 const sepoliaRpcUrl =
-  process.env.SEPOLIA_RPC_URL ?? "https://ethereum-sepolia-rpc.publicnode.com";
+  process.env.SEPOLIA_RPC_URL || "https://ethereum-sepolia-rpc.publicnode.com";
 
 export default defineConfig({
   plugins: [hardhatToolboxMochaEthersPlugin],
