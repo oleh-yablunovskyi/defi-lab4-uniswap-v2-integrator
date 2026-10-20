@@ -71,7 +71,6 @@ async function balances(label: string) {
   console.log(`[Balance] ${label}: ${a} KYIV, ${b} mFIAT`);
 }
 
-
 console.log(`[User] account #0 ${user.address}`);
 await balances("start");
 
@@ -92,7 +91,6 @@ const liquidityReceipt = await send(
   integrator.provideLiquidity(A, B, LIQUIDITY_A, LIQUIDITY_B),
 );
 const pairAddress: string = await factory.getPair(A, B);
-names[pairAddress.toLowerCase()] = "pair";
 const pair = new ethers.Contract(pairAddress, PAIR_ABI, ethers.provider);
 // The pair sorts its two tokens by address: token0 is the smaller one
 const aIsToken0 = (await pair.token0()).toLowerCase() === A.toLowerCase();
