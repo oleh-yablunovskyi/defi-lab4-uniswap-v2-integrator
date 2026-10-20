@@ -26,9 +26,10 @@ export default defineConfig({
   },
   networks: {
     // Local fork of Sepolia: `npx hardhat node --network sepoliaFork` starts a node on
-    // http://127.0.0.1:8545 that copies Sepolia state (the Uniswap V2 contracts among it)
-    // from the latest block. The scripts reach it as the built-in "localhost" network.
-    // Transactions are executed only on this local node and never reach Sepolia.
+    // http://127.0.0.1:8545 that reads Sepolia state (the Uniswap V2 contracts among it)
+    // as of the latest safe block; no block number is pinned. The scripts reach it as the
+    // built-in "localhost" network. Transactions are executed only on this local node and
+    // never reach Sepolia.
     sepoliaFork: {
       type: "edr-simulated",
       chainType: "l1",
