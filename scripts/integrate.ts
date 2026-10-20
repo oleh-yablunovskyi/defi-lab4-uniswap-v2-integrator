@@ -5,6 +5,7 @@
 //      initial liquidity 1000 KYIV : 2000 mFIAT (1 KYIV = 2 mFIAT);
 //   c) calls swapTokens, which swaps 50 KYIV for mFIAT through the new pair.
 //   npx hardhat run scripts/integrate.ts --network localhost
+import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { network } from "hardhat";
 import type { ContractTransactionResponse, TransactionReceipt } from "ethers";
@@ -35,7 +36,11 @@ const LIQUIDITY_B = parseEther("2000"); // mFIAT
 const SWAP_AMOUNT = parseEther("50"); // KYIV
 const SLIPPAGE_BPS = 100n; // amountOutMin = quote minus 1%
 
-const deployment = JSON.parse(await readFile(`deployments/${networkName}.json`, "utf8"));
+const deploymentFile = `deployments/${networkName}.json`;
+if (!existsSync(deploymentFile)) {
+  throw new Error(`No ${deploymentFile}, run scripts/deploy.ts first`);
+}
+const deployment = JSON.parse(await readFile(deploymentFile, "utf8"));
 if ((await ethers.provider.getCode(deployment.integrator)) === "0x") {
   throw new Error(`No integrator at ${deployment.integrator}, run scripts/deploy.ts first`);
 }
