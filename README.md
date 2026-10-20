@@ -75,7 +75,7 @@ pair are the same on every fresh fork; block numbers, hashes and the number of p
 b) provideLiquidity: 1000.0 KYIV + 2000.0 mFIAT
 [Factory] 0x7E0987E5b3a30e3f2828572Bb659A548460a3003: 27135 pairs
           getPair(KYIV, mFIAT) = 0x0000000000000000000000000000000000000000
-[Tx] DefiIntegrator.provideLiquidity: block 11956851, status 1, gas used 2332649
+[Tx] DefiIntegrator.provideLiquidity: block 11956959, status 1, gas used 2332649
 [Event] PairCreated: pair 0x614f412A84Fab2Bb5cB41a9Aff4502844C2f4021, pairs 27136
 [Pair] reserves: 1000.0 KYIV / 2000.0 mFIAT, 1 KYIV = 2.0 mFIAT
 [LP] user: 1414.213562373095047801 of 1414.213562373095048801 LP tokens (1000 wei at address 0)
@@ -83,7 +83,7 @@ b) provideLiquidity: 1000.0 KYIV + 2000.0 mFIAT
 c) swapTokens: 50.0 KYIV -> mFIAT
 [Quote] router.getAmountsOut: 94.965947516311854074 mFIAT
         amountOutMin (quote - 1%): 94.016288041148735533 mFIAT
-[Tx] DefiIntegrator.swapTokens: block 11956852, status 1, gas used 161490
+[Tx] DefiIntegrator.swapTokens: block 11956960, status 1, gas used 161490
 [Result] received 94.965947516311854074 mFIAT
 ```
 
