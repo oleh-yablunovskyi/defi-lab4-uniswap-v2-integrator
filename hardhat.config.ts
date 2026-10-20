@@ -36,9 +36,10 @@ export default defineConfig({
       forking: {
         url: sepoliaRpcUrl,
       },
-      // Test-only accounts made for this lab; they exist only on the local fork. The default
-      // Hardhat accounts are not used here: their private keys are public, so on Sepolia
-      // they have thousands of transactions and EIP-7702 delegations, which a fork copies.
+      // Test accounts made for this lab. They are funded only on the local fork; the phrase is
+      // public, so never send real funds to these addresses. The default Hardhat accounts are
+      // not used: their keys are public too, and on Sepolia they have thousands of transactions
+      // and EIP-7702 delegations, which a fork would copy.
       accounts: {
         mnemonic: "exclude april payment live found wealth glow indoor story tent lawsuit foot",
       },

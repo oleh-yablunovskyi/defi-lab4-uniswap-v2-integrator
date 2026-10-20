@@ -63,8 +63,8 @@ forks a newer block and forgets the local transactions; run `deploy.ts` again af
 
 The `sepoliaFork` network has its own test mnemonic. The default Hardhat accounts have publicly
 known private keys, so on Sepolia they already have thousands of transactions and EIP-7702
-delegations, and a fork would copy that state. The accounts of this mnemonic exist only on the local
-fork; never send real funds to them.
+delegations, and a fork would copy that state. The accounts of this mnemonic are funded only on the
+local fork. The phrase is public, so never send real funds to these addresses.
 
 ## Expected output
 
